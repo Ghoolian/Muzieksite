@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiesten{% endblock %}
+
+{% block body %}
+    <h1>Artiesten</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ artiesten.id }}</td>
+            </tr>
+            <tr>
+                <th>Naam</th>
+                <td>{{ artiesten.Naam }}</td>
+            </tr>
+            <tr>
+                <th>Achternaam</th>
+                <td>{{ artiesten.Achternaam }}</td>
+            </tr>
+            <tr>
+                <th>Muziekstijl</th>
+                <td>{{ artiesten.Muziekstijl }}</td>
+            </tr>
+            <tr>
+                <th>Geboortedatum</th>
+                <td>{{ artiesten.Geboortedatum ? artiesten.Geboortedatum|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Beschrijving</th>
+                <td>{{ artiesten.Beschrijving }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('artiesten_index') }}">back to list</a>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Nummer{% endblock %}
+
+{% block body %}
+    <h1>Create new Nummer</h1>
+
+    {{ include('nummers/_form.html.twig') }}
+
+    <a href="{{ path('nummers_index') }}">back to list</a>
+{% endblock %}

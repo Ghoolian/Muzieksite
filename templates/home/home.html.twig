@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+
+        {% if app.user.isAdmin == "1" %}
+            <div class="mb-3">
+                You are logged in as admin account {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+
+        {% elseif app.user.isAdmin == "0" %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+    {% if app.user %}
+    {% if app.user.activationCheck == true %}
+    {{ knp_menu_render('main') }}
+    {% endif %}
+    {% endif %}
+
+    {% if app.user == false %}
+    {{ knp_menu_render('guest') }}
+    {% endif %}
+{% endblock %}

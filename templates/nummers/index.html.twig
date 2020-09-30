@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nummers index{% endblock %}
+
+{% block body %}
+    <h1>Nummers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Jaar</th>
+                <th>Album</th>
+                <th>Artiest</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nummer in nummers %}
+            <tr>
+                <td>{{ nummer.id }}</td>
+                <td>{{ nummer.naam }}</td>
+                <td>{{ nummer.jaar ? nummer.jaar|date('Y-m-d') : '' }}</td>
+                <td>{{ nummer.albumID.naam }}</td>
+                <td>{{ nummer.albumID.artiestenID.naam }} {{ nummer.albumID.artiestenID.achternaam  }}</td>
+                <td>
+                    <a href="{{ path('nummers_show', {'id': nummer.id}) }}">show</a>
+
+                    {% if app.user %}
+                        {% if app.user.isAdmin == "1" %}
+                            <div class="mb-3">
+                                <td><a href="{{ path('nummers_edit', {'id': nummer.id}) }}">edit</a></td>
+                {% endif %}
+                    {% endif %}
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('nummers_new') }}">Create new</a> <br/> <br/>
+    <a href="{{ path('home') }}">Back to homepage</a>
+
+{% endblock %}

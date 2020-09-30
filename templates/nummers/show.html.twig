@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nummers{% endblock %}
+
+{% block body %}
+    <h1>Nummers</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nummer.id }}</td>
+            </tr>
+            <tr>
+                <th>Naam</th>
+                <td>{{ nummer.Naam }}</td>
+            </tr>
+            <tr>
+                <th>Jaar</th>
+                <td>{{ nummer.Jaar ? nummer.Jaar|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Album</th>
+                <td>{{ nummer.albumID.naam }}</td>
+            </tr>
+            <tr>
+                <th>Artiest</th>
+                <td>{{ nummer.albumID.artiestenID.naam }} {{ nummer.albumID.artiestenID.achternaam }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('nummers_index') }}">back to list</a>
+
+
+
+{% endblock %}
